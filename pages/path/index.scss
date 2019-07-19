@@ -1,0 +1,136 @@
+@import "../../style/common";
+
+page{
+  background-color: $background;
+  .content{
+    .header{
+      background-color: $blue;
+      .search{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .from,.to{
+          box-sizing: border-box;
+          width: 70%;
+          height: 90rpx;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: rgba(255, 255, 255, .2);
+          border-radius: 10rpx;
+          margin-bottom: 15rpx;
+          position: relative;
+          view{
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .ins,.guanbi{
+            padding: 0 30rpx;
+          }
+          .ins{
+            text{
+              font-size: 28rpx;
+              color: $fontColorDDD;
+            }
+          }
+          .addr{
+            flex: 1;
+            input{
+              width: 100%;
+              font-size: 30rpx;
+              color: #fff;
+              @include whiteSpace();
+            }
+          }
+          .placeholder{
+            color: $fontColorDDD;
+          }
+          .guanbi{
+            image{
+              width: 30rpx;
+              height: 30rpx;
+            }
+          }
+          .jiaohuan,.sousuo{
+            position: absolute;
+            right: -70rpx;
+            image{
+              width: 40rpx;
+              height: 40rpx;
+            }
+          }
+        }
+      }
+      .tabBar{
+        display: flex;
+        align-items: center;
+        text{
+          flex: 1;
+          font-size: 30rpx;
+          color: $fontColorDDD;
+          text-align: center;
+          line-height: 80rpx;
+          position: relative;
+        }
+        .active{
+          color: #fff;
+          &::before{
+            content: '';
+            display: inline;
+            width: 100%;
+            height: 6rpx;
+            position: absolute;
+            bottom: 4rpx;
+            left: 0;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    .history{
+      display: flex;
+      flex-direction: column;
+      .ul{
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        margin-top: 20rpx;
+        .li{
+          display: flex;
+          padding: 20rpx 0;
+          margin-left: 80rpx;
+          margin-right: 20rpx;
+          border-bottom: 1px solid $border;
+          position: relative;
+          .logo{
+            width: 60rpx;
+            height: 60rpx;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            left: -50rpx;
+            image{
+              width: 30rpx;
+              height: 30rpx;
+            }
+          }
+          .desc{
+            flex: 1;
+            font-size: 32rpx;
+            line-height: 60rpx;
+          }
+        }
+        .clear{
+          font-size: 30rpx;
+          color: $fontColor999;
+          line-height: 90rpx;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

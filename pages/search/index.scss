@@ -1,0 +1,212 @@
+@import "../../style/common";
+
+page{
+  background-color: $background;
+  .content{
+    .module{
+      margin-bottom: 20rpx;
+    }
+    .searchBar{
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 20rpx 30rpx;
+      box-shadow: 0 5rpx 15rpx 0 rgba(204, 204, 204, .5);
+      .nearbySearch{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-right: 30rpx;
+        background-color: #eee;
+        border-radius: 10rpx;
+        input{
+          flex: 1;
+          margin-right: 20rpx;
+          padding: 10rpx 20rpx;
+          color: $fontColor333;
+        }
+        image{
+          width: 30rpx;
+          height: 30rpx;
+          padding: 10rpx 20rpx;
+        }
+      }
+    }
+    .keywords{
+      .ul{
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        .li{
+          display: flex;
+          align-items: center;
+          padding: 30rpx;
+          border-bottom: 1px solid #eee;
+          .destination{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 50rpx;
+            .name{
+              font-size: 32rpx;
+              color: $fontColor333;
+              line-height: 60rpx;
+              .keyword{
+                color: $blue;
+              }
+            }
+            .address,.distance{
+              font-size: 28rpx;
+              color: $fontColor999;
+              line-height: 40rpx;
+            }
+          }
+          .searchList{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            image{
+              width: 50rpx;
+              height: 50rpx;
+            }
+          }
+          .line{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            image{
+              width: 40rpx;
+              height: 40rpx;
+            }
+            text{
+              font-size: 28rpx;
+              color: $blue;
+              line-height: 40rpx;
+            }
+          }
+        }
+      }
+      .empty{
+        font-size: 30rpx;
+        color: $fontColor333;
+        line-height: 100rpx;
+        text-align: center;
+      }
+      .close{
+        width: 100rpx;
+        height: 100rpx;
+        position: fixed;
+        bottom: 30rpx;
+        left: 50%;
+        margin-left: -50rpx;
+      }
+    }
+    .list{
+      background-color: #fff;
+      .ul{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10rpx;
+        .li{
+          width: 20%;
+          height: 20vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          image{
+            width: 80rpx;
+            height: 80rpx;
+            margin-bottom: 10rpx;
+          }
+          text{
+            font-size: 30rpx;
+            color: $fontColor666;
+          }
+        }
+      }
+    }
+    .history{
+      display: flex;
+      flex-direction: column;
+      .ul{
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        margin-top: 20rpx;
+        .li{
+          display: flex;
+          padding: 20rpx 0;
+          margin-left: 80rpx;
+          margin-right: 20rpx;
+          border-bottom: 1px solid $border;
+          position: relative;
+          .logo{
+            width: 60rpx;
+            height: 60rpx;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            left: -50rpx;
+            image{
+              width: 30rpx;
+              height: 30rpx;
+            }
+          }
+          .destination,.desc{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .name{
+              font-size: 32rpx;
+              line-height: 60rpx;
+            }
+          }
+          .destination{
+            .address,.distance{
+              font-size: 28rpx;
+              color: $fontColor999;
+              line-height: 40rpx;
+            }
+          }
+          .line,.searchList{
+            width: 100rpx;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          .line{
+            image{
+              width: 40rpx;
+              height: 40rpx;
+            }
+            text{
+              font-size: 28rpx;
+              color: $blue;
+              line-height: 40rpx;
+            }
+          }
+          .searchList{
+            image{
+              width: 50rpx;
+              height: 50rpx;
+            }
+          }
+        }
+        .clear{
+          font-size: 30rpx;
+          color: $fontColor999;
+          line-height: 90rpx;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

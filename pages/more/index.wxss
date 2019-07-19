@@ -1,0 +1,56 @@
+page {
+  background-color: #eee; }
+  page .content .list {
+    margin-top: 20rpx;
+    background-color: #fff; }
+    page .content .list .dl {
+      display: flex;
+      flex-direction: column; }
+      page .content .list .dl .dt {
+        font-size: 32rpx;
+        line-height: 32rpx;
+        margin-top: 20rpx;
+        padding-left: 20rpx;
+        border-left: 6rpx solid; }
+      page .content .list .dl .color_1 {
+        color: #ff280e;
+        border-left-color: #ff280e; }
+      page .content .list .dl .color_2 {
+        color: orange;
+        border-left-color: orange; }
+      page .content .list .dl .color_3 {
+        color: yellow;
+        border-left-color: yellow; }
+      page .content .list .dl .color_4 {
+        color: green;
+        border-left-color: green; }
+      page .content .list .dl .color_5 {
+        color: greenyellow;
+        border-left-color: greenyellow; }
+      page .content .list .dl .color_6 {
+        color: cornflowerblue;
+        border-left-color: cornflowerblue; }
+      page .content .list .dl .color_7 {
+        color: purple;
+        border-left-color: purple; }
+      page .content .list .dl .color_8 {
+        color: pink;
+        border-left-color: pink; }
+      page .content .list .dl .dd {
+        padding: 20rpx;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; }
+        page .content .list .dl .dd navigator {
+          box-sizing: border-box;
+          width: 25%;
+          line-height: 30rpx;
+          font-size: 30rpx;
+          color: #333;
+          text-align: center;
+          border-right: 1px solid #eee;
+          margin: 20rpx 0; }
+        page .content .list .dl .dd navigator:nth-of-type(4n+0), page .content .list .dl .dd navigator:last-of-type {
+          border-right: none; }
+
+/*# sourceMappingURL=index.wxss.map */

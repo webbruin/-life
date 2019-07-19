@@ -1,0 +1,176 @@
+page{
+  height: 100%;
+  background-color: #eee;
+}
+page .content .header{
+  height: 530rpx;
+  background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562695244885&di=a24840b3c36d586f90a77af6746afc3a&imgtype=0&src=http%3A%2F%2Fstatic.loupan.com%2Fupfile2%2Fimage%2F20171031%2F20171031093430_6496757.jpg')  no-repeat center;
+  background-size: 100%;
+  margin-bottom: 20rpx;
+}
+page .content .header .background{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(125, 125, 125, .5);
+}
+page .content .header .background .region{
+  display: flex;
+  align-items: center;
+  margin: 30rpx 0 0 30rpx;
+}
+page .content .header .background .region text{
+  font: 30rpx;
+  color: #fff;
+  margin-right: 20rpx;
+}
+page .content .header .background .region text:last-of-type{
+  margin-right: 0;
+}
+page .content .header .background .temperature{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+page .content .header .background .temperature view text{
+  color: #fff;
+}
+page .content .header .background .temperature .h1{
+  position: relative;
+  margin-bottom: 30rpx;
+}
+page .content .header .background .temperature .h1 .desc{
+  font-size: 150rpx;
+}
+page .content .header .background .temperature .h1 .tag{
+  width: 200rpx;
+  color: #fff;
+  position: absolute;
+  z-index: 999;
+  right: -210rpx;
+}
+page .content .header .background .temperature .h1 .tag:nth-of-type(2){
+  font-size: 150rpx;
+  top: 20rpx;
+}
+page .content .header .background .temperature .h1 .tag:nth-of-type(3){
+  font-size: 28rpx;
+  bottom: 50rpx;
+}
+page .content .header .background .temperature .p{
+  display: flex;
+  align-items: center;
+}
+page .content .header .background .temperature .p text{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+page .content .header .background .temperature .p text:last-of-type{
+  margin-right: 0;
+}
+page .content .body{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+page .content .body .title{
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 1px solid #eee;
+}
+page .content .body .ul .li{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+}
+page .content .body .ul .li view{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+page .content .body .ul .li view text{
+  font-size: 30rpx;
+}
+page .content .body .ul .li .date{
+  width: 120rpx;
+}
+page .content .body .ul .li .date text{
+  color: #999;
+}
+page .content .body .ul .li .weather image{
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+page .content .body .ul .li .degrees{
+  justify-content: flex-end;
+}
+page .content .footer{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+page .content .footer .title{
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 1px solid #eee;
+}
+page .content .footer .ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+page .content .footer .ul .li{
+  box-sizing: border-box;
+  width: 25vw;
+  height: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+page .content .footer .ul .li:nth-of-type(4n+0){
+  border-right: none;
+}
+page .content .footer .ul .li text{
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+page .content .footer .ul .li .desc{
+  color: #999;
+}
+page .container {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20rpx;
+  transition: .3s all; }
+page .container .title {
+  font-size: 30rpx;
+  color: #333;
+  text-align: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+page .container .ul {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx; }
+page .container .ul .li {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 50rpx; }
+page .container.show {
+  transform: translateY(0); }
+page .container.hidden {
+  transform: translateY(50rpx); }

@@ -1,0 +1,14 @@
+<view class="content">
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="list">
+      <view class="dl">
+        <view class="dt color_{{index + 1}}">{{item.title}}</view>
+        <view class="dd">
+          <block wx:for-index="indexChild" wx:for-item="itemChild" wx:for="{{item.children}}" wx:key="{{indexChild}}">
+            <navigator url="../nearby/index?name={{itemChild}}" hover-class="none">{{itemChild}}</navigator>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

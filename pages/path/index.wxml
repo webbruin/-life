@@ -1,0 +1,52 @@
+<view class="content">
+  <view class="header">
+    <view class="search">
+      <view class="from">
+        <view class="ins">
+          <text>从</text>
+        </view>
+        <view class="addr">
+          <input type="text" placeholder="输入起点" value="{{from}}" placeholder-class="placeholder" disabled bindtap="onSelectFromAddr" />
+        </view>
+        <view class="guanbi">
+          <image src="/image/guanbi.png" mode="widthFix" bindtap="onCloseFrom" hidden="{{!from}}"></image>
+        </view>
+        <view class="jiaohuan" bindtap="onChange">
+          <image src="/image/jiaohuan.png" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="to">
+        <view class="ins">
+          <text>到</text>
+        </view>
+        <view class="addr">
+          <input type="text" placeholder="输入终点" value="{{to}}" placeholder-class="placeholder" disabled bindtap="onSelectToAddr" />
+        </view>
+        <view class="guanbi">
+          <image src="/image/guanbi.png" mode="widthFix" bindtap="onCloseTo" hidden="{{!to}}"></image>
+        </view>
+        <view class="sousuo" bindtap="onSearch">
+          <image src="/image/sousuo.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+    <view class="tabBar">
+      <block wx:for="{{tabBarList}}" wx:key="{{index}}">
+        <text class="{{index === tabBarIndex ? 'active' : ''}}" bindtap="onTabBar" data-index="{{index}}">{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="history">
+    <view class="ul" wx:if="{{history.length > 0}}">
+      <block wx:for="{{history}}" wx:key="{{index}}">
+        <view class="li" bindtap="onSearchHistory" data-obj="{{item}}">
+          <view class="logo">
+            <image src="/image/lishi.png" mode="widthFix"></image>
+          </view>
+          <view class="desc">{{item.from}} → {{item.to}}</view>
+        </view>
+      </block>
+      <view class="clear" bindtap="onClearHistory">清除历史记录</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<view class="mask {{isShowPop ? 'show' : 'hidden'}}" catchtouchmove="true" bindtap="openShare">
+  <view class="popup">
+    <slot></slot>
+  </view>
+</view>

@@ -1,0 +1,189 @@
+<view class="content">
+  <view class="header">
+    <view class="search">
+      <view class="from">
+        <input type="text" placeholder="输入起点" value="{{from}}" placeholder-class="placeholder" disabled bindtap="onSelectFromAddr" />
+      </view>
+      <view class="jiantou">
+        <image src="/image/changjiantou.png" mode="widthFix"></image>
+      </view>
+      <view class="to">
+        <input type="text" placeholder="输入终点" value="{{to}}" placeholder-class="placeholder" disabled bindtap="onSelectToAddr" />
+      </view>
+    </view>
+    <view class="tabBar">
+      <block wx:for="{{tabBarList}}" wx:key="{{index}}">
+        <text class="{{index === tabBarIndex ? 'active' : ''}}" bindtap="onTabBar" data-index="{{index}}">{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+
+  <view class="transit" wx:if="{{options.mode == 'transit'}}">
+    <view class="ul">
+      <view class="li" bindtap="bindSelectDate">
+        <view>
+          <text class="title" wx:if="{{date && time}}">{{date + ' ' + time}} 出发</text>
+          <text class="title" wx:else>现在出发</text>
+          <text class="arrow"></text>
+        </view>
+      </view>
+      <picker class="li" value="{{lineIndex}}" range="{{lineArray}}" range-key="name" bindchange="bindLineChange">
+        <view>
+          <text class="title">{{lineArray[lineIndex].name}}</text>
+          <text class="arrow"></text>
+        </view>
+      </picker>
+      <view class="mask" hidden="{{!showDate}}">
+        <view class="popup">
+          <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">选择日期{{date ? ': ' + date : ''}}</view>
+          </picker>
+          <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+            <view class="picker">选择时间{{time ? ': ' + time : ''}}</view>
+          </picker>
+          <view class="confirm" bindtap="bindConfirmDate">确定(需同时设置日期、时间才有效)</view>
+        </view>
+      </view>
+    </view>
+    <view class="div">
+      <block wx:if="{{result.distance}}">
+        <text>{{filters.formatKm(result.distance)}}</text>
+      </block>
+      <block wx:if="{{result.taxi_cost}}">
+        <text class="dot">·</text>
+        <text>出租车{{filters.formatCost(result.taxi_cost)}}元起</text>
+      </block>
+    </view>
+    <block wx:if="{{result.transits && result.transits.length > 0}}" wx:for="{{result.transits}}" wx:key="{{index}}">
+      <view class="dl">
+        <navigator class="dd" url="../transitDetail/index?index={{index}}&tabBarIndex=0" hover-class="none">
+          <view class="lines">
+            <block wx:for="{{item.segments}}" wx:key="{{childIndex}}" wx:for-index="childIndex" wx:for-item="childItem">
+              <text class="numLine" wx:if="{{childItem.bus.buslines[0].name}}">{{filters.formatSplit(childItem.bus.buslines[0].name)}}</text>
+              <text class="numLine" wx:elif="{{childItem.railway.name}}">{{childItem.railway.name}}</text>
+              <text class="arrow" wx:if="{{childIndex < (item.segments.length - 2)}}">{{childIndex < (item.segments.length - 2) ? '→' : ''}}</text>
+            </block>
+          </view>
+          <view class="desc">
+            <text>{{filters.formatDate(item.duration)}}</text>
+            <text class="dot">·</text>
+            <text>{{filters.formatCost(item.cost)}}元</text>
+            <text class="dot">·</text>
+            <text>步行{{filters.formatKm(item.walking_distance)}}</text>
+          </view>
+          <view class="desc">
+            <text>本路线{{filters.formatKm(item.distance)}}</text>
+          </view>
+        </navigator>
+        <navigator class="dt" url="../transitDetail/index?index={{index}}&tabBarIndex=1" hover-class="none">
+          <image src="/image/luxian3.png" mode="widthFix"></image>
+        </navigator>
+      </view>
+    </block>
+    <view class="empty" wx:if="{{result.transits && result.transits.length <= 0}}">没有推荐路线</view>
+  </view>
+  <view class="map" wx:else>
+    <map
+      id="myMap"
+      scale='{{scale}}'
+      enable-3D="true"
+      show-location="true"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      polyline="{{polyline}}"
+    >
+    </map>
+    <cover-view class="location" bindtap="moveToLocation">
+      <cover-image src="/image/dingwei.png"></cover-image>
+    </cover-view>
+    <cover-view class="jia" bindtap="magnifyScale">
+      <cover-image src="/image/jia.png"></cover-image>
+    </cover-view>
+    <cover-view class="jian" bindtap="shrinkScale">
+      <cover-image src="/image/jian.png"></cover-image>
+    </cover-view>
+  </view>
+
+  <view class="footer driving" wx:if="{{result && options.mode == 'driving'}}">
+    <view class="ul">
+      <block wx:for="{{result.paths}}" wx:key="{{index}}">
+        <view class="li dl {{index === schemeIndex ? 'active' : ''}}" bindtap="onSelectScheme" data-index="{{index}}">
+          <view class="dt">{{index === 0 ? '推荐' : '方案' + (index + 1)}}</view>
+          <view class="dd">
+            <text class="time">{{filters.formatDate(item.duration)}}</text>
+            <text class="km">{{filters.formatKm(item.distance)}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="desc">
+      <view class="cost">
+        <text wx:if="{{result.paths[schemeIndex].tolls > 0}}">过路费{{result.paths[schemeIndex].tolls}}元</text>
+        <text>出租车{{filters.formatCost(result.taxi_cost)}}元起</text>
+        <text>红路灯{{result.paths[schemeIndex].traffic_lights}}个</text>
+      </view>
+      <navigator class="detail" url="../lineDetail/index?index={{schemeIndex}}" hover-class="none">路线详情</navigator>
+      <view class="navigator" bindtap="startNavigator">导航</view>
+    </view>
+  </view>
+  <view class="footer walking" wx:elif="{{result && options.mode == 'walking'}}">
+    <block wx:for="{{result.paths}}" wx:key="{{index}}">
+      <view class="ul">
+        <text class="li">{{filters.formatDate(item.duration)}}</text>
+        <text class="li">{{filters.formatKm(item.distance)}}</text>
+      </view>
+    </block>
+    <view class="desc">
+      <navigator class="detail" url="../lineDetail/index" hover-class="none">路线详情</navigator>
+    </view>
+  </view>
+  <view class="footer riding" wx:elif="{{result && options.mode == 'riding'}}">
+    <block wx:for="{{result.paths}}" wx:key="{{index}}">
+      <view class="ul">
+        <text class="li">{{filters.formatDate(item.duration)}}</text>
+        <text class="li">{{filters.formatKm(item.distance)}}</text>
+      </view>
+    </block>
+    <view class="desc">
+      <navigator class="detail" url="../lineDetail/index" hover-class="none">路线详情</navigator>
+    </view>
+  </view>
+</view>
+
+<wxs module="filters">
+  var formatDate = function(num) {
+    if (num < 60) {
+      return Math.floor(num) + '秒'
+    } else if (num < 3600) {
+      return Math.floor(num / 60) + '分钟' + Math.floor(num % 60) + '秒'
+    } else {
+      if (num % 3600 === 0) {
+        return Math.floor(num / 3600) + '小时'
+      } else {
+        return Math.floor(num / 3600) + '小时' + Math.floor((num % 3600) / 60) + '分钟'
+      }
+    }
+  }
+  var formatKm = function(num) {
+    if (num < 1000) {
+      return Math.floor(num * 100) / 100 + '米'
+    } else {
+      return Math.floor(num / 1000 * 100) / 100 + '公里'
+    }
+  }
+  var formatSplit = function(text) {
+    if (text) {
+      return text.split('(')[0]
+    }
+  }
+  var formatCost = function(num) {
+    if (num) {
+      return Number(num).toFixed(1)
+    }
+  }
+  module.exports.formatDate = formatDate
+  module.exports.formatKm = formatKm
+  module.exports.formatSplit = formatSplit
+  module.exports.formatCost = formatCost
+</wxs>

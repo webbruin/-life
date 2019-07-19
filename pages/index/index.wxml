@@ -1,0 +1,38 @@
+<view class="content">
+  <cover-view class="header">
+    <cover-view class="navigator avatar" bindtap="toSetting">
+      <cover-image src="/image/touxiang.png"></cover-image>
+    </cover-view>
+    <cover-view class="navigator search" bindtap="toSearch">
+      <cover-view class="text">搜索地点、公交、地铁</cover-view>
+    </cover-view>
+    <cover-view class="navigator weather" bindtap="toWeather">
+      <cover-view class="text" wx:if="{{now}}">{{now.tmp}}° {{now.cond_txt}}</cover-view>
+    </cover-view>
+  </cover-view>
+
+  <map
+      id="myMap"
+      scale="{{scale}}"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      enable-3D="true"
+      show-location="true"
+      markers="{{markers}}"
+    ></map>
+
+  <cover-view class="navigator path" bindtap="toPath">
+    <cover-image src="/image/luxian.png"></cover-image>
+    <cover-view class="text">路线</cover-view>
+  </cover-view>
+
+  <cover-view class="location" bindtap="moveToLocation">
+    <cover-image src="/image/dingwei.png"></cover-image>
+  </cover-view>
+
+  <cover-view class="share">
+    <button plain open-type="share">
+      <cover-image src="/image/fenxiang.png"></cover-image>
+    </button>
+  </cover-view>
+</view>

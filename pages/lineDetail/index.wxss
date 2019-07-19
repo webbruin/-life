@@ -1,0 +1,113 @@
+.content .header{
+  padding: 20rpx;
+  background-color: #5d86ef;
+}
+.content .header .destination{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.content .header .destination .from,.content .header .destination .to{
+  flex: 1;
+  font-size: 32rpx;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.content .header .destination .to{
+  text-align: right;
+}
+.content .header .destination .from{
+  text-align: left;
+}
+.content .header .destination .jiantou{
+  margin: 0 30rpx;
+}
+.content .header .destination .jiantou image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.content .header .desc{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.content .header .desc text{
+  font-size: 32rpx;
+  color: #fff;
+}
+.content .header .desc .dot{
+  margin: 0 10rpx;
+}
+
+.content .body{
+  background-color: #fff;
+}
+.content .body .ul{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+.content .body .ul .li::before{
+  content: '';
+  display: inline-block;
+  width: 25rpx;
+  height: 25rpx;
+  background-color: #eee;
+  border-radius: 100rpx;
+  position: absolute;
+  left: -45rpx;
+}
+.content .body .ul .from::before{
+  background-color: #5d86ef;
+}
+.content .body .ul .to::before{
+  background-color: #f00;
+}
+.content .body .ul .li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 10rpx;
+  margin-left: 50rpx;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 2;
+}
+.content .body .ul .li .progress{
+  height: 80%;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  z-index: 1;
+  border-radius: 10rpx;
+  background-color: #5d86ef;
+  opacity: .2;
+}
+.content .body .ul .li .road{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50rpx;
+}
+.content .body .ul .li .road .name{
+  font-size: 32rpx;
+  color: #333;
+}
+.content .body .ul .line .road .name{
+  margin-bottom: 10rpx;
+}
+.content .body .ul .li .road .desc{
+  font-size: 30rpx;
+  color: #999;
+}
+.content .body .ul .li .toll{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.content .body .ul .li .toll text{
+  font-size: 32rpx;
+  color: #5d86ef;
+}

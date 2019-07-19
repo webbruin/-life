@@ -1,0 +1,108 @@
+page {
+  background-color: #eee; }
+  page .content .header {
+    background-color: #5d86ef; }
+    page .content .header .search {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      page .content .header .search .from, page .content .header .search .to {
+        box-sizing: border-box;
+        width: 70%;
+        height: 90rpx;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10rpx;
+        margin-bottom: 15rpx;
+        position: relative; }
+        page .content .header .search .from view, page .content .header .search .to view {
+          box-sizing: border-box;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+        page .content .header .search .from .ins, page .content .header .search .from .guanbi, page .content .header .search .to .ins, page .content .header .search .to .guanbi {
+          padding: 0 30rpx; }
+        page .content .header .search .from .ins text, page .content .header .search .to .ins text {
+          font-size: 28rpx;
+          color: #ddd; }
+        page .content .header .search .from .addr, page .content .header .search .to .addr {
+          flex: 1; }
+          page .content .header .search .from .addr input, page .content .header .search .to .addr input {
+            width: 100%;
+            font-size: 30rpx;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; }
+        page .content .header .search .from .placeholder, page .content .header .search .to .placeholder {
+          color: #ddd; }
+        page .content .header .search .from .guanbi image, page .content .header .search .to .guanbi image {
+          width: 30rpx;
+          height: 30rpx; }
+        page .content .header .search .from .jiaohuan, page .content .header .search .from .sousuo, page .content .header .search .to .jiaohuan, page .content .header .search .to .sousuo {
+          position: absolute;
+          right: -70rpx; }
+          page .content .header .search .from .jiaohuan image, page .content .header .search .from .sousuo image, page .content .header .search .to .jiaohuan image, page .content .header .search .to .sousuo image {
+            width: 40rpx;
+            height: 40rpx; }
+    page .content .header .tabBar {
+      display: flex;
+      align-items: center; }
+      page .content .header .tabBar text {
+        flex: 1;
+        font-size: 30rpx;
+        color: #ddd;
+        text-align: center;
+        line-height: 80rpx;
+        position: relative; }
+      page .content .header .tabBar .active {
+        color: #fff; }
+        page .content .header .tabBar .active::before {
+          content: '';
+          display: inline;
+          width: 100%;
+          height: 6rpx;
+          position: absolute;
+          bottom: 4rpx;
+          left: 0;
+          background-color: #fff; }
+  page .content .history {
+    display: flex;
+    flex-direction: column; }
+    page .content .history .ul {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      margin-top: 20rpx; }
+      page .content .history .ul .li {
+        display: flex;
+        padding: 20rpx 0;
+        margin-left: 80rpx;
+        margin-right: 20rpx;
+        border-bottom: 1px solid #eee;
+        position: relative; }
+        page .content .history .ul .li .logo {
+          width: 60rpx;
+          height: 60rpx;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          position: absolute;
+          left: -50rpx; }
+          page .content .history .ul .li .logo image {
+            width: 30rpx;
+            height: 30rpx; }
+        page .content .history .ul .li .desc {
+          flex: 1;
+          font-size: 32rpx;
+          line-height: 60rpx; }
+      page .content .history .ul .clear {
+        font-size: 30rpx;
+        color: #999;
+        line-height: 90rpx;
+        text-align: center; }
+
+/*# sourceMappingURL=index.wxss.map */

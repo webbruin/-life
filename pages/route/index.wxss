@@ -1,0 +1,311 @@
+page {
+  height: 100%;
+  background-color: #eee; }
+  page .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column; }
+    page .content .header {
+      background-color: #5d86ef; }
+      page .content .header .search {
+        height: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        page .content .header .search .from, page .content .header .search .to {
+          box-sizing: border-box;
+          width: 40%;
+          height: 60rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 10rpx;
+          padding: 0 20rpx; }
+          page .content .header .search .from input, page .content .header .search .to input {
+            width: 100%;
+            font-size: 26rpx;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; }
+          page .content .header .search .from .placeholder, page .content .header .search .to .placeholder {
+            color: #ddd; }
+        page .content .header .search .jiantou {
+          margin: 0 20rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          page .content .header .search .jiantou image {
+            width: 30rpx; }
+      page .content .header .tabBar {
+        height: 80rpx;
+        display: flex;
+        align-items: center; }
+        page .content .header .tabBar text {
+          flex: 1;
+          font-size: 30rpx;
+          color: #ddd;
+          text-align: center;
+          line-height: 80rpx;
+          position: relative; }
+        page .content .header .tabBar .active {
+          color: #fff; }
+          page .content .header .tabBar .active::before {
+            content: '';
+            display: inline;
+            width: 100%;
+            height: 6rpx;
+            position: absolute;
+            bottom: 4rpx;
+            left: 0;
+            background-color: #fff; }
+    page .content .transit .ul {
+      height: 100rpx;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      margin-bottom: 20rpx;
+      position: relative; }
+      page .content .transit .ul .li {
+        height: 100%;
+        flex: 1; }
+        page .content .transit .ul .li view {
+          height: 100rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          page .content .transit .ul .li view .title {
+            font-size: 30rpx; }
+          page .content .transit .ul .li view .arrow {
+            width: 12rpx;
+            height: 12rpx;
+            border-top: none;
+            border-left: none;
+            border-right: 2rpx solid #666;
+            border-bottom: 2rpx solid #666;
+            transform: rotate(45deg);
+            margin-top: -10rpx;
+            margin-left: 20rpx; }
+      page .content .transit .ul .mask {
+        height: calc(100vh - 280rpx);
+        width: 100%;
+        position: absolute;
+        top: 100rpx;
+        z-index: 2000; }
+        page .content .transit .ul .mask .popup {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #fff;
+          border-top: 1px solid #eee; }
+          page .content .transit .ul .mask .popup picker, page .content .transit .ul .mask .popup .confirm {
+            margin-top: 20rpx; }
+          page .content .transit .ul .mask .popup picker {
+            width: 80%;
+            line-height: 80rpx;
+            text-align: center;
+            color: #fff;
+            background-color: #5d86ef;
+            border-radius: 10rpx; }
+          page .content .transit .ul .mask .popup .confirm {
+            width: 100%;
+            line-height: 90rpx;
+            text-align: center;
+            color: #fff;
+            background-color: #5d86ef; }
+    page .content .transit .div {
+      font-size: 30rpx;
+      text-align: right;
+      padding: 20rpx 30rpx;
+      background-color: #fff;
+      margin-bottom: 20rpx; }
+    page .content .transit .dl {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20rpx 30rpx;
+      background-color: #fff;
+      margin-bottom: 20rpx; }
+      page .content .transit .dl .dd {
+        flex: 1;
+        margin-right: 50rpx; }
+        page .content .transit .dl .dd .lines {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap; }
+          page .content .transit .dl .dd .lines .numLine {
+            font-size: 30rpx;
+            font-weight: bold;
+            border-radius: 10rpx;
+            padding: 10rpx 20rpx;
+            margin: 10rpx 0;
+            background-color: #E6E6E6; }
+          page .content .transit .dl .dd .lines .arrow {
+            font-size: 28rpx;
+            color: #909090;
+            margin: 0 20rpx; }
+        page .content .transit .dl .dd .desc {
+          display: flex;
+          align-items: center;
+          line-height: 50rpx; }
+          page .content .transit .dl .dd .desc text {
+            font-size: 30rpx;
+            color: #999; }
+          page .content .transit .dl .dd .desc .dot {
+            margin: 0 10rpx; }
+      page .content .transit .dl .dt {
+        width: 90rpx;
+        height: 90rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100rpx;
+        border: 1px solid #eee; }
+        page .content .transit .dl .dt image {
+          width: 50rpx;
+          height: 50rpx; }
+    page .content .transit .dl:last-of-type {
+      border-bottom: none; }
+    page .content .transit .empty {
+      font-size: 30rpx;
+      color: #999;
+      background-color: #fff;
+      padding: 30rpx;
+      text-align: center; }
+    page .content .map {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative; }
+      page .content .map #myMap {
+        flex: 1;
+        width: 100%; }
+      page .content .map .location, page .content .map .jia, page .content .map .jian {
+        width: 70rpx;
+        height: 70rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 99999;
+        border-radius: 100rpx;
+        background-color: #fff;
+        box-shadow: 0 5rpx 15rpx 0 rgba(204, 204, 204, 0.5); }
+      page .content .map .jia, page .content .map .jian {
+        right: 40rpx; }
+        page .content .map .jia cover-image, page .content .map .jian cover-image {
+          width: 30rpx;
+          height: 30rpx; }
+      page .content .map .location {
+        left: 40rpx;
+        bottom: 80rpx; }
+        page .content .map .location cover-image {
+          width: 40rpx;
+          height: 40rpx; }
+      page .content .map .jia {
+        bottom: 180rpx; }
+      page .content .map .jian {
+        bottom: 80rpx; }
+    page .content .driving {
+      display: flex;
+      flex-direction: column;
+      padding: 30rpx;
+      background-color: #fff; }
+      page .content .driving .ul {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20rpx; }
+        page .content .driving .ul .dl {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          border: 1px solid #DFDFDF;
+          border-radius: 10rpx;
+          background-color: #F3F3F3;
+          margin-right: 5%; }
+          page .content .driving .ul .dl .dt {
+            font-size: 28rpx;
+            line-height: 50rpx;
+            color: #999;
+            text-align: center;
+            background-color: #DFDFDF; }
+          page .content .driving .ul .dl .dd {
+            height: 100rpx;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; }
+            page .content .driving .ul .dl .dd .time {
+              font-size: 30rpx;
+              line-height: 40rpx;
+              color: #000; }
+            page .content .driving .ul .dl .dd .km {
+              font-size: 26rpx;
+              color: #999; }
+        page .content .driving .ul .dl:last-of-type {
+          margin-right: 0; }
+        page .content .driving .ul .active {
+          border: 1px solid #5d86ef; }
+          page .content .driving .ul .active .dt {
+            color: #fff;
+            background-color: #5d86ef; }
+          page .content .driving .ul .active .dd .time, page .content .driving .ul .active .dd .km {
+            color: #5d86ef; }
+      page .content .driving .desc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        page .content .driving .desc .cost, page .content .driving .desc .detail {
+          margin-right: 5%; }
+        page .content .driving .desc view {
+          display: flex;
+          flex-direction: column; }
+          page .content .driving .desc view text {
+            font-size: 26rpx; }
+        page .content .driving .desc .detail, page .content .driving .desc .navigator {
+          box-sizing: border-box;
+          width: 200rpx;
+          height: 80rpx;
+          line-height: 80rpx;
+          font-size: 30rpx;
+          text-align: center;
+          border-radius: 10rpx; }
+        page .content .driving .desc .detail {
+          border: 1px solid #5d86ef;
+          color: #5d86ef; }
+        page .content .driving .desc .navigator {
+          border: 1px solid #fff;
+          background-color: #5d86ef;
+          color: #fff; }
+    page .content .walking, page .content .riding {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff; }
+      page .content .walking view, page .content .riding view {
+        padding: 20rpx 30rpx; }
+      page .content .walking .ul, page .content .riding .ul {
+        border-bottom: 1px solid #eee; }
+        page .content .walking .ul .li, page .content .riding .ul .li {
+          font-size: 30rpx;
+          line-height: 40rpx;
+          color: #000;
+          margin-right: 20rpx; }
+        page .content .walking .ul .li:last-of-type, page .content .riding .ul .li:last-of-type {
+          margin-right: 0; }
+      page .content .walking .desc, page .content .riding .desc {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center; }
+        page .content .walking .desc navigator, page .content .riding .desc navigator {
+          width: 33%;
+          height: 80rpx;
+          line-height: 80rpx;
+          font-size: 30rpx;
+          color: #fff;
+          text-align: center;
+          background-color: #5d86ef;
+          border-radius: 10rpx; }
+
+/*# sourceMappingURL=index.wxss.map */

@@ -1,0 +1,47 @@
+<view class="content">
+  <view class="nearbyList">
+    <block wx:if="{{result && result.length > 0}}">
+      <view class="ul">
+        <block wx:for="{{result}}" wx:key="{{index}}">
+          <view class="li">
+            <navigator class="navigator" url="../searchDetail/index?name={{item.name}}&index={{index}}" hover-class="none">
+              <view class="img">
+                <image wx:if="{{item.photos[0].url}}" src="{{item.photos[0].url}}"></image>
+                <text wx:else>暂无照片</text>
+              </view>
+              <view class="info">
+                <view class="name">{{item.name}}</view>
+                <view class="adress">{{item.address}}</view>
+                <view class="location">
+                  <text class="tips">我的位置</text>
+                  <text class="distance">{{filters.formatKm(item.distance)}}</text>
+                </view>
+                <view class="rating" wx:if="{{item.biz_ext.rating}}">{{item.biz_ext.rating}}</view>
+                <view class="tel" wx:if="{{item.tel}}">{{item.tel}}</view>
+              </view>
+            </navigator>
+            <view class="line" bindtap="toRoute" data-obj="{{item}}">
+              <image src="/image/luxian1.png" mode="widthFix"></image>
+              <text>去这里</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="over" wx:if="{{result.length > 0 && over}}">加载完毕</view>
+    </block>
+    <block wx:if="{{result && result.length <= 0}}">
+      <view class="empty">未搜索到内容</view>
+    </block>
+  </view>
+</view>
+
+<wxs module="filters">
+  var formatKm = function(num) {
+  if (num < 1000) {
+  return Math.floor(num * 100) / 100 + 'm'
+  } else {
+  return Math.floor(num / 1000 * 100) / 100 + 'Km'
+  }
+  }
+  module.exports.formatKm = formatKm
+</wxs>

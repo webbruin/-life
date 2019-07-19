@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/setting/index",
+    "pages/more/index",
+    "pages/search/index",
+    "pages/path/index",
+    "pages/route/index",
+    "pages/lineDetail/index",
+    "pages/weather/index",
+    "pages/transitDetail/index",
+    "pages/nearby/index",
+    "pages/searchDetail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#5d86ef",
+    "navigationBarTitleText": "地图life",
+    "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

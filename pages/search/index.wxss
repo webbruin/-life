@@ -1,0 +1,165 @@
+page {
+  background-color: #eee; }
+  page .content .module {
+    margin-bottom: 20rpx; }
+  page .content .searchBar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20rpx 30rpx;
+    box-shadow: 0 5rpx 15rpx 0 rgba(204, 204, 204, 0.5); }
+    page .content .searchBar .nearbySearch {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-right: 30rpx;
+      background-color: #eee;
+      border-radius: 10rpx; }
+      page .content .searchBar .nearbySearch input {
+        flex: 1;
+        margin-right: 20rpx;
+        padding: 10rpx 20rpx;
+        color: #333; }
+      page .content .searchBar .nearbySearch image {
+        width: 30rpx;
+        height: 30rpx;
+        padding: 10rpx 20rpx; }
+  page .content .keywords .ul {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; }
+    page .content .keywords .ul .li {
+      display: flex;
+      align-items: center;
+      padding: 30rpx;
+      border-bottom: 1px solid #eee; }
+      page .content .keywords .ul .li .destination {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 50rpx; }
+        page .content .keywords .ul .li .destination .name {
+          font-size: 32rpx;
+          color: #333;
+          line-height: 60rpx; }
+          page .content .keywords .ul .li .destination .name .keyword {
+            color: #5d86ef; }
+        page .content .keywords .ul .li .destination .address, page .content .keywords .ul .li .destination .distance {
+          font-size: 28rpx;
+          color: #999;
+          line-height: 40rpx; }
+      page .content .keywords .ul .li .searchList {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        page .content .keywords .ul .li .searchList image {
+          width: 50rpx;
+          height: 50rpx; }
+      page .content .keywords .ul .li .line {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        page .content .keywords .ul .li .line image {
+          width: 40rpx;
+          height: 40rpx; }
+        page .content .keywords .ul .li .line text {
+          font-size: 28rpx;
+          color: #5d86ef;
+          line-height: 40rpx; }
+  page .content .keywords .empty {
+    font-size: 30rpx;
+    color: #333;
+    line-height: 100rpx;
+    text-align: center; }
+  page .content .keywords .close {
+    width: 100rpx;
+    height: 100rpx;
+    position: fixed;
+    bottom: 30rpx;
+    left: 50%;
+    margin-left: -50rpx; }
+  page .content .list {
+    background-color: #fff; }
+    page .content .list .ul {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10rpx; }
+      page .content .list .ul .li {
+        width: 20%;
+        height: 20vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        page .content .list .ul .li image {
+          width: 80rpx;
+          height: 80rpx;
+          margin-bottom: 10rpx; }
+        page .content .list .ul .li text {
+          font-size: 30rpx;
+          color: #666; }
+  page .content .history {
+    display: flex;
+    flex-direction: column; }
+    page .content .history .ul {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      margin-top: 20rpx; }
+      page .content .history .ul .li {
+        display: flex;
+        padding: 20rpx 0;
+        margin-left: 80rpx;
+        margin-right: 20rpx;
+        border-bottom: 1px solid #eee;
+        position: relative; }
+        page .content .history .ul .li .logo {
+          width: 60rpx;
+          height: 60rpx;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          position: absolute;
+          left: -50rpx; }
+          page .content .history .ul .li .logo image {
+            width: 30rpx;
+            height: 30rpx; }
+        page .content .history .ul .li .destination, page .content .history .ul .li .desc {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center; }
+          page .content .history .ul .li .destination .name, page .content .history .ul .li .desc .name {
+            font-size: 32rpx;
+            line-height: 60rpx; }
+        page .content .history .ul .li .destination .address, page .content .history .ul .li .destination .distance {
+          font-size: 28rpx;
+          color: #999;
+          line-height: 40rpx; }
+        page .content .history .ul .li .line, page .content .history .ul .li .searchList {
+          width: 100rpx;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+        page .content .history .ul .li .line image {
+          width: 40rpx;
+          height: 40rpx; }
+        page .content .history .ul .li .line text {
+          font-size: 28rpx;
+          color: #5d86ef;
+          line-height: 40rpx; }
+        page .content .history .ul .li .searchList image {
+          width: 50rpx;
+          height: 50rpx; }
+      page .content .history .ul .clear {
+        font-size: 30rpx;
+        color: #999;
+        line-height: 90rpx;
+        text-align: center; }
+
+/*# sourceMappingURL=index.wxss.map */

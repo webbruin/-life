@@ -1,0 +1,15 @@
+<view class="content">
+  <view class="img">
+    <image wx:if="{{result.photos[0].url}}" src="{{result.photos[0].url}}"></image>
+    <text wx:else>暂无图片</text>
+  </view>
+  <view class="body">
+    <view class="name">{{result.name}}</view>
+    <view class="address">{{result.district}}{{result.address}}</view>
+    <view class="navigation" bindtap="toRoute">去这里</view>
+    <view class="option">
+      <button class="text share" plain open-type="share">分享</button>
+      <navigator class="text home" open-type="reLaunch" url="../index/index" hover-class="none">首页</navigator>
+    </view>
+  </view>
+</view>

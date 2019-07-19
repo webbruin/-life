@@ -1,0 +1,79 @@
+<view class='content'>
+  <view class='header'>
+    <view class='destination'>
+      <view class='from'>{{from}}</view>
+      <view class="jiantou">
+        <image src="/image/changjiantou.png" mode="widthFix"></image>
+      </view>
+      <view class='to'>{{to}}</view>
+    </view>
+    <view class='desc'>
+      <text class='duration'>{{filters.formatDate(result.duration)}}</text>
+      <text class="dot">·</text>
+      <text class='distance'>{{filters.formatKm(result.distance)}}</text>
+    </view>
+  </view>
+  <view class='body'>
+    <view class='ul'>
+      <view class='li from'>
+        <view class='road'>
+          <text class='name'>从 {{from}} 出发</text>
+        </view>
+        <view class='toll'>
+          <text wx:if='{{mode == "driving"}}'>过路费{{result.tolls}}元</text>
+          <text wx:else>{{filters.formatDate(result.duration)}}</text>
+        </view>
+      </view>
+      <block wx:for='{{result.steps}}' wx:key='{{index}}'>
+        <view class='li line'>
+        <view class='progress' wx:if='{{mode != "driving"}}' style='width: {{(item.distance / result.distance) * 100 >= 1 ? (item.distance / result.distance) * 100 : 1}}%;'></view>
+          <view class='road'>
+            <text class='name' wx:if='{{item.road}}'>{{item.road}}</text>
+            <text class='desc'>{{item.instruction}}</text>
+          </view>
+          <view class='toll' wx:if='{{mode == "driving"}}'>
+            <text>{{item.tolls}}元</text>
+          </view>
+          <view class='toll' wx:else>
+            <text>{{filters.formatKm(item.distance)}}</text>
+            <text>{{filters.formatDate(item.duration)}}</text>
+          </view>
+        </view>
+      </block>
+      <view class='li to'>
+        <view class='road'>
+          <text class='name'>到达 {{to}}</text>
+        </view>
+        <view class='toll'>
+          <text wx:if='{{mode == "driving"}}'>过路费{{result.tolls}}元</text>
+          <text wx:else>{{filters.formatDate(result.duration)}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs module="filters">
+  var formatDate = function(num) {
+    if (num < 60) {
+      return Math.floor(num) + '秒'
+    } else if (num < 3600) {
+      return Math.floor(num / 60) + '分钟' + Math.floor(num % 60) + '秒'
+    } else {
+      if (num % 3600 === 0) {
+        return Math.floor(num / 3600) + '小时'
+      } else {
+        return Math.floor(num / 3600) + '小时' + Math.floor((num % 3600) / 60) + '分钟'
+      }
+    }
+  }
+  var formatKm = function(num) {
+    if (num < 1000) {
+      return Math.floor(num * 100) / 100 + '米'
+    } else {
+      return Math.floor(num / 1000 * 100) / 100 + '公里'
+    }
+  }
+  module.exports.formatDate = formatDate
+  module.exports.formatKm = formatKm
+</wxs>

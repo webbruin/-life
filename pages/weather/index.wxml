@@ -1,0 +1,75 @@
+<view class='content'>
+  <view class='header'>
+    <view class='background' wx:if='{{result.now}}'>
+      <view class='region' bindtap='onChangeRegion'>
+      <text>{{addr}}</text>
+      <text>[切换]</text>
+    </view>
+    <view class='temperature'>
+      <view class='h1'>
+        <text class='desc'>{{result.now.tmp}}</text>
+        <text class='tag'>°</text>
+        <text class='tag'>[{{updatetime}}更新]</text>
+      </view>
+      <view class='p'>
+        <text>{{result.now.cond_txt}}</text>
+      </view>
+      <view class='p'>
+        <text>湿度{{result.now.hum}}%</text>
+        <text>{{result.now.wind_dir}}{{result.now.wind_sc}}级</text>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class='body'>
+    <view class='title'>未来3天天气预报</view>
+    <view class='ul'>
+    <block wx:for='{{result.forecast}}' wx:key='{{index}}'>
+      <view class='li'>
+        <view class='date'>
+          <text>{{filters.formatStr(item.date)}}</text>
+        </view>
+        <view class='weather'>
+          <image src="/image/heweather/{{item.cond_code_d}}.png" mode="widthFix"></image>
+          <text wx:if="{{item.cond_txt_d}}">{{item.cond_txt_d}}</text>
+          <text wx:if="{{item.cond_txt_n}}">转{{item.cond_txt_n}}</text>
+        </view>
+        <view class='degrees'>
+          <text>{{item.tmp_max}}℃</text>
+          <text>~{{item.tmp_min}}℃</text>
+        </view>
+      </view>
+    </block>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='title'>生活指数</view>
+    <view class='ul'>
+    <block wx:for='{{result.lifestyle}}' wx:key='{{index}}'>
+      <view class='li' bindtap="openShare" data-index="{{index}}">
+        <text class='desc'>{{lifestyleName[item.type]}}</text>
+        <text class='name'>{{item.brf}}</text>
+      </view>
+    </block>
+    </view>
+  </view>
+</view>
+
+<popup isShowPop="{{isShowPop}}" bind:isShowPop="onIsShowPop">
+  <view class="container {{isShowPop ? 'show' : 'hidden'}}">
+    <view class="title">{{lifestyleName[result.lifestyle[index].type]}}-{{result.lifestyle[index].brf}}</view>
+    <view class="ul">
+      <view class="li">{{result.lifestyle[index].txt}}</view>
+    </view>
+  </view>
+</popup>
+
+
+<wxs module="filters">
+  var formatStr = function(text) {
+    if (text) {
+      return text.substring(5)
+    }
+  }
+  module.exports.formatStr = formatStr
+</wxs>

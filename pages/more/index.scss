@@ -1,0 +1,49 @@
+@import "../../style/common";
+
+page{
+  background-color: $background;
+  .content{
+    .list{
+      margin-top: 20rpx;
+      background-color: #fff;
+      .dl{
+        display: flex;
+        flex-direction: column;
+        .dt{
+          font-size: 32rpx;
+          line-height: 32rpx;
+          margin-top: 20rpx;
+          padding-left: 20rpx;
+          border-left: 6rpx solid;
+        }
+        .color_1{ color: #ff280e; border-left-color: #ff280e; }
+        .color_2{ color: orange; border-left-color: orange; }
+        .color_3{ color: yellow; border-left-color: yellow; }
+        .color_4{ color: green; border-left-color: green; }
+        .color_5{ color: greenyellow; border-left-color: greenyellow; }
+        .color_6{ color: cornflowerblue; border-left-color: cornflowerblue; }
+        .color_7{ color: purple; border-left-color: purple; }
+        .color_8{ color: pink; border-left-color: pink; }
+        .dd{
+          padding: 20rpx;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          navigator{
+            box-sizing: border-box;
+            width: 25%;
+            line-height: 30rpx;
+            font-size: 30rpx;
+            color: $fontColor333;
+            text-align: center;
+            border-right: 1px solid $border;
+            margin: 20rpx 0;
+          }
+          navigator:nth-of-type(4n+0),navigator:last-of-type{
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}

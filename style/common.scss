@@ -1,0 +1,28 @@
+$fontColor000: #000;
+$fontColor333: #333;
+$fontColor666: #666;
+$fontColor999: #999;
+$fontColorDDD: #ddd;
+$blue: #5d86ef;
+$background: #eee;
+$border: #eee;
+
+
+@mixin border () {
+  border-bottom: 1px solid $background;
+}
+@mixin whiteSpace () {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+@mixin lineClamp ($line) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  word-break: break-all;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+}

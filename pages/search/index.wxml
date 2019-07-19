@@ -1,0 +1,99 @@
+<view class="content" wx:if="{{origin || citycode}}">
+  <view class="module searchBar">
+    <view class="nearbySearch">
+      <input type="text" placeholder="在“我的位置”附近搜索" focus confirm-type="search" value="{{searchText}}" bindinput="onKeyword" bindconfirm="onSearch" />
+      <image src="/image/guanbi1.png" mode="widthFix" hidden="{{!searchText}}" bindtap="clearKeyword"></image>
+      <image src="/image/guanbi.png" mode="widthFix" hidden="{{searchText}}"></image>
+    </view>
+    <view class="search" bindtap="onSearch">搜索</view>
+  </view>
+  <view class="module keywords" hidden="{{!searchText}}">
+    <view class="ul" wx:if="{{result && result.length > 0}}">
+      <block wx:for="{{result}}" wx:key="{{index}}">
+        <view class="li" wx:if="{{item.id.length > 0}}">
+          <navigator class="destination" url="../searchDetail/index?name={{item.name}}&index={{index}}" hover-class="none">
+            <rich-text class="name" nodes="{{filters.replaceKeyword(item.name, searchText)}}"></rich-text>
+            <text class="address">{{item.district}}{{item.address}}</text>
+            <text class="distance" wx:if="{{distanceList[item.location]}}">{{filters.formatKm(distanceList[item.location])}}</text>
+          </navigator>
+          <view class="line" bindtap="toRoute" data-obj="{{item}}">
+            <image src="/image/luxian1.png" mode="widthFix"></image>
+            <text>去这里</text>
+          </view>
+        </view>
+        <view class="li" bindtap="toNavigator" data-name="{{item.name}}" wx:else>
+          <view class="destination">
+            <rich-text class="name" nodes="{{filters.replaceKeyword(item.name, searchText)}}"></rich-text>
+            <text class="address">{{item.district}}{{item.address}}</text>
+          </view>
+          <view class="searchList">
+            <image src="/image/sousuo1.png" mode="widthFix"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="empty" wx:if="{{result && result.length <= 0}}">未搜索到内容</view>
+    <image class="close" src="/image/guanbi1.png" mode="widthFix" hidden="{{!searchText}}" bindtap="clearKeyword"></image>
+  </view>
+  <view hidden="{{searchText}}">
+    <view class="module list">
+      <view class="ul">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+          <navigator class="li" url="../{{item.path}}/index?name={{item.name}}" hover-class="none">
+            <image src="{{item.url}}" mode="widthFix"></image>
+            <text>{{item.name}}</text>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    <view class="history">
+      <view class="ul" wx:if="{{history.length > 0}}">
+        <block wx:for="{{history}}" wx:key="{{index}}">
+          <block wx:if="{{item.id}}">
+            <view class="li">
+              <view class="logo">
+                <image src="/image/lishi.png" mode="widthFix"></image>
+              </view>
+              <view class="destination" bindtap="toSearchDetail" data-name="{{item.name}}" data-obj="{{item}}" hover-class="none">
+                <text class="name">{{item.name}}</text>
+                <text class="address">{{item.district}}</text>
+                <text class="distance">{{item.address}}</text>
+              </view>
+              <view class="line" bindtap="toRoute" data-obj="{{item}}">
+                <image src="/image/luxian1.png" mode="widthFix"></image>
+                <text>去这里</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="li"  bindtap="toNavigator" data-name="{{item.name}}">
+              <view class="logo">
+                <image src="/image/lishi.png" mode="widthFix"></image>
+              </view>
+              <view class="desc">{{item.name}}</view>
+              <view class="searchList">
+                <image src="/image/sousuo1.png" mode="widthFix"></image>
+              </view>
+            </view>
+          </block>
+        </block>
+        <view class="clear" bindtap="onClearHistory">清除历史记录</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs module="filters">
+  var formatKm = function(num) {
+    if (num < 1000) {
+      return Math.floor(num * 100) / 100 + 'm'
+    } else {
+      return Math.floor(num / 1000 * 100) / 100 + 'Km'
+    }
+  }
+  var replaceKeyword = function(text, keyword) {
+    return text.replace(keyword, '<span class="keyword">'+keyword+'</span>')
+  }
+  module.exports.formatKm = formatKm
+  module.exports.replaceKeyword = replaceKeyword
+</wxs>

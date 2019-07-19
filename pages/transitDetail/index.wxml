@@ -1,0 +1,124 @@
+<view class="content">
+  <view class="tabBar">
+    <block wx:for="{{tabBarList}}" wx:key="{{index}}">
+      <view class="tab {{tabBarIndex == index ? 'active' : ''}}" bindtap="bindTabBar" data-index="{{index}}">{{item}}</view>
+      <view class="gap" wx:if="{{index < tabBarList.length - 1}}"></view>
+    </block>
+  </view>
+  <view class='body' wx:if="{{tabBarIndex == 0}}">
+    <view class='ul'>
+      <view class='li from'>
+        <view class='road'>
+          <view class='name'>从 {{from}} 出发</view>
+        </view>
+      </view>
+      <block wx:for="{{result.segments}}" wx:key="{{index}}">
+        <view class='li' wx:if="{{item.bus.buslines.length > 0 || item.walking.distance}}">
+          <view class='road'>
+            <view class='desc margin' wx:if="{{item.walking.distance || item.walking.duration}}">步行{{filters.formatKm(item.walking.distance)}}{{item.bus.buslines[0].departure_stop.name ? '到达' + item.bus.buslines[0].departure_stop.name : ''}}，约{{filters.formatDate(item.walking.duration)}}</view>
+            <view class="dl margin" wx:if="{{item.bus.buslines.length > 0}}">
+                <view class="dt bus">{{item.bus.buslines[0].name}}</view>
+                <view class="dd">
+                  <view class="departure">
+                    <text class="stationName">{{item.bus.buslines[0].departure_stop.name}}</text>
+                    <text class="tag" wx:if="{{item.entrance.name}}">{{item.entrance.name}}进站</text>
+                  </view>
+                  <view class="pathway">
+                    <text>途径{{item.bus.buslines[0].via_num}}个站</text>
+                    <text class="dot">·</text>
+                    <text>{{filters.formatKm(item.bus.buslines[0].distance)}}</text>
+                    <text class="dot">·</text>
+                    <text>{{filters.formatDate(item.bus.buslines[0].duration)}}</text>
+                  </view>
+                  <view class="stops">
+                    <text>
+                      <block wx:for="{{item.bus.buslines[0].via_stops}}" wx:for-item="stepItem" wx:for-index="stepIndex" wx:key="{{stepIndex}}">{{stepIndex > 0 ? ' → ' + stepItem.name : stepItem.name}}</block>
+                    </text>
+                  </view>
+                  <view class="arrival">
+                    <text class="stationName">{{item.bus.buslines[0].arrival_stop.name}}</text>
+                    <text class="tag" wx:if="{{item.exit.name}}">{{item.exit.name}}出站</text>
+                  </view>
+                </view>
+              </view>
+          </view>
+        </view>
+        <view class="li" wx:elif="{{item.railway.id || item.walking.distance}}">
+          <view class="road">
+            <view class='desc margin' wx:if="{{item.walking.distance || item.walking.duration}}">步行{{filters.formatKm(item.walking.distance)}}{{item.bus.buslines[0].departure_stop.name ? '到达' + item.bus.buslines[0].departure_stop.name : ''}}，约{{filters.formatDate(item.walking.duration)}}</view>
+            <view class="dl margin" wx:if="{{item.railway.id}}">
+                <view class="dt railway">{{item.railway.name}}</view>
+                <view class="dd">
+                  <view class="departure">
+                    <text class="stationName">{{item.railway.departure_stop.name}}</text>
+                    <text class="tag" wx:if="{{item.entrance.name}}">{{item.entrance.name}}进站</text>
+                  </view>
+                  <view class="pathway">
+                    <text>{{filters.formatKm(item.railway.distance)}}</text>
+                    <text class="dot">·</text>
+                    <text>{{filters.formatDate(item.railway.time)}}</text>
+                  </view>
+                  <view class="arrival">
+                    <text class="stationName">{{item.railway.arrival_stop.name}}</text>
+                  </view>
+                </view>
+              </view>
+          </view>
+        </view>
+      </block>
+      <view class='li to'>
+        <view class='road'>
+          <view class='name'>到达 {{to}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="map" wx:if="{{tabBarIndex == 1}}">
+    <map
+      id="myMap"
+      scale='{{scale}}'
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      enable-3D="true"
+      show-location="true"
+      markers="{{markers}}"
+      polyline="{{polyline}}"
+    ></map>
+    <cover-view class="location" bindtap="moveToLocation">
+      <cover-image src="/image/dingwei.png"></cover-image>
+    </cover-view>
+    <cover-view class="jia" bindtap="magnifyScale">
+      <cover-image src="/image/jia.png"></cover-image>
+    </cover-view>
+    <cover-view class="jian" bindtap="shrinkScale">
+      <cover-image src="/image/jian.png"></cover-image>
+    </cover-view>
+  </view>
+</view>
+
+<wxs module="filters">
+  var formatDate = function(num) {
+    if (num < 30) {
+      return '30秒'
+    } else if (num < 60) {
+      return '1分钟'
+    } else if (num < 3600) {
+      return Math.floor(num / 60) + '分钟'
+    } else {
+      if (num % 3600 === 0) {
+        return Math.floor(num / 3600) + '小时'
+      } else {
+        return Math.floor(num / 3600) + '小时' + Math.floor((num % 3600) / 60) + '分钟'
+      }
+    }
+  }
+  var formatKm = function(num) {
+    if (num < 1000) {
+      return Math.floor(num * 100) / 100 + '米'
+    } else {
+      return Math.floor(num / 1000 * 100) / 100 + '公里'
+    }
+  }
+  module.exports.formatDate = formatDate
+  module.exports.formatKm = formatKm
+</wxs>

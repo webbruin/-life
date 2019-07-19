@@ -1,0 +1,214 @@
+@import "../../style/common";
+
+page{
+  height: 100%;
+  background-color: $background;
+  .content{
+    height: 100%;
+    .tabBar{
+      width: 100%;
+      height: 100rpx;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      box-shadow: 0 5rpx 15rpx 0 rgba(204, 204, 204, .5);
+      .tab{
+        height: 100%;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32rpx;
+      }
+      .active{
+        color: $blue;
+      }
+      .gap{
+        width: 2rpx;
+        height: 30rpx;
+        background-color: $border;
+      }
+    }
+    .body{
+      margin-top: 120rpx;
+      background-color: #fff;
+      .ul{
+        display: flex;
+        flex-direction: column;
+        padding: 20rpx;
+        .li{
+          display: flex;
+          justify-content: space-between;
+          padding: 30rpx 10rpx;
+          border-bottom: 1px dashed #eee;
+          position: relative;
+          z-index: 2;
+          margin-left: 50rpx;
+          .road{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .name{
+              font-size: 32rpx;
+              color: #333;
+            }
+            .margin{
+              margin-bottom: 20rpx;
+            }
+            .margin:last-of-type{
+              margin-bottom: 0;
+            }
+            .desc{
+              font-size: 30rpx;
+              color: #999;
+            }
+            .dl{
+              .dt{
+                font-size: 32rpx;
+                color: #fff;
+                font-weight: bold;
+                padding: 20rpx;
+                background-color: #9FD199;
+                position: relative;
+                border-radius: 6rpx 6rpx 0 0;
+              }
+              .dt::before{
+                content: '';
+                display: inline-block;
+                width: 25rpx;
+                height: 25rpx;
+                background-color: #eee;
+                border-radius: 100rpx;
+                position: absolute;
+                top: 30rpx;
+                left: -55rpx;
+              }
+              .dd{
+                padding: 20rpx;
+                background-color: #EEF8F0;
+                display: flex;
+                flex-direction: column;
+                border-radius: 0 0 6rpx 6rpx;
+                view{
+                  display: flex;
+                  align-items: center;
+                  flex-wrap: wrap;
+                  margin-bottom: 10rpx;
+                }
+                view:last-of-type{
+                  margin-bottom: 0;
+                }
+                .departure{
+                  .stationName{
+                    font-size: 30rpx;
+                    font-weight: bold;
+                  }
+                  .tag{
+                    font-size: 24rpx;
+                    color: #fff;
+                    background-color: $blue;
+                    border-radius: 6rpx;
+                    margin-left: 10rpx;
+                    padding: 0 10rpx;
+                  }
+                }
+                .pathway{
+                  text{
+                    font-size: 30rpx;
+                    color: $fontColor999;
+                  }
+                  .dot{
+                    margin: 0 10rpx;
+                  }
+                }
+                .stops{
+                  text{
+                    font-size: 30rpx;
+                  }
+                }
+                .arrival{
+                  .stationName{
+                    font-size: 30rpx;
+                    font-weight: bold;
+                  }
+                  .tag{
+                    font-size: 24rpx;
+                    color: #fff;
+                    background-color: #f00;
+                    border-radius: 6rpx;
+                    margin-left: 10rpx;
+                    padding: 0 10rpx;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .from,.to{
+          align-items: center;
+        }
+        .from::before,.to::before{
+          content: '';
+          display: inline-block;
+          width: 25rpx;
+          height: 25rpx;
+          position: absolute;
+          left: -45rpx;
+          border-radius: 100rpx;
+        }
+        .from::before{
+          background-color: #5d86ef;
+        }
+        .to::before{
+          background-color: #f00;
+        }
+      }
+    }
+    .map{
+      margin-top: 100rpx;
+      width: 100%;
+      height: 100%;
+      #myMap{
+        width: 100%;
+        height: 100%;
+      }
+      .location,.jia,.jian{
+        width: 70rpx;
+        height: 70rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 99999;
+        border-radius: 100rpx;
+        background-color: #fff;
+        box-shadow: 0 5rpx 15rpx 0 rgba(204, 204, 204, .5);
+      }
+      .jia,.jian{
+        right: 40rpx;
+        cover-image{
+          width: 30rpx;
+          height: 30rpx;
+        }
+      }
+      .location{
+        left: 40rpx;
+        bottom: 80rpx;
+        cover-image{
+          width: 40rpx;
+          height: 40rpx;
+        }
+      }
+      .jia{
+        bottom: 180rpx;
+      }
+      .jian{
+        bottom: 80rpx;
+      }
+    }
+  }
+}
